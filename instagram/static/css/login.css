@@ -1,0 +1,96 @@
+h1 {
+    font-size: 30px;
+    text-align: center;
+    font-family: cursive;
+}
+
+.container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.nextcontainer {
+    width: 350px;
+    height: auto;
+    padding: 30px;
+    margin-left: 30px;
+    border: 1px solid lightgrey;
+}
+
+.photo img {
+    width: 350px;
+    height: 500px;
+    padding: 2em;
+    /* border: 1px solid lightgrey; */
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.forms input {
+    justify-content: center;
+    margin: 15px;
+    padding: 7px;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.2s ease-in-out;
+    border: 1px solid lightgrey;
+    width: 70%;
+    font-family: cursive;
+}
+
+.account {
+    margin-top: 10px;
+    padding: 5px;
+}
+
+button {
+    margin: 10px;
+    border-radius: 10px;
+    padding: 7px;
+    outline: none;
+    color: white;
+    background-color: lightblue;
+    border: 1px lightgrey;
+    font-family: cursive;
+    width: 75%;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    border: 1px solid lightgrey;
+    padding: 0 2em;
+    min-height: 50px;
+    min-width: 200px;
+}
+
+.account a {
+    text-decoration: none;
+    color: #4d4dff;
+}
+
+.forms button:hover,
+.forms button:focus {
+    background-color: #4d4dff;
+}
+
+.fblogin {
+    padding: 5px;
+    margin: 15px;
+    text-align: center;
+}
+
+.error_msg {
+    text-align: center;
+    color: red;
+}

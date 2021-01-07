@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %} ">
+
+    <title>Login</title>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="photo">
+            <img src="{% static 'images/mbimage.jpg' %}" alt="">
+        </div>
+        <div class="nextcontainer">
+            <h1>Instagram</h1>
+
+            <div class="error_msg">
+                <span>
+                    {% for message in messages %}
+                    {{ message }}
+                    {% endfor %}
+                </span>
+            </div>
+            <div class=forms>
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <button value="submit">Login</button>
+                </form>
+            </div>
+            <div class="fblogin">
+                <a href="#"><span>Forgot Passowrd?</span></a>
+            </div>
+            <div class="account">
+                <span>Dont have an account? <a href="{% url 'register' %} ">Sign Up</a></span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+</body>
+
+</html>

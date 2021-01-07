@@ -1,0 +1,74 @@
+{% extends 'blog/sections/main.html' %}
+{% load static %}
+
+{% block title %}Instagram{% endblock %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="left_column"></div>
+    <div class="center_column">
+        {% for post in posts %}
+        <div class="card">
+            <div class="card_header">
+                <div class="profile">
+                    <img src="{{ post.author.profile.imageurl }}" alt="Avatar" class="avatar">
+                    <a
+                        href="{% url 'visit_pofile' post.author.profile.id %}"><span>{{ post.author.username }}</span></a>
+                    <span style="color:grey; font-size: 10px;">{{ post.date_posted | timesince }}</span>
+
+                </div>
+                <div class="profile-info">
+                    <div class="toggle-bar">
+                        <button onclick="myfunction()" class="button-toggle"><strong>...</strong></button>
+                        <div class="toggle-action">
+                            <a href="{% url 'delete_post' post.id %}">Delete</a>
+                            <a>Unfollow</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <img src="{{ post.imageurl }}"></img>
+            </div>
+            <div class="card-footer">
+                {% for comment in post.comment.all %}
+                <div class="comment">
+                    <div class="first">
+                        <img src="{{ comment.user.profile.imageurl }}" alt="Avatar" class="avatar">
+                        <a href="{% url 'visit_pofile' comment.user.profile.id %}"><span>{{ comment.user.username }}
+                            </span></a>
+                        {{ comment.content }}
+                    </div>
+                    <div class="toggle-bar">
+                        <button onclick="myfunction()" class="button-toggle"><strong>...</strong></button>
+                        <div class="toggle-action">
+                            <a href="{% url 'delete_comment' comment.id %}">Delete</a>
+                            <a>Edit</a>
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+                {% endfor %}
+                <form action=" {% url 'add_comment' post.id %}" method="post">
+                    {% csrf_token %}
+                    {{ cform }}
+                    <input type="submit" name="add" value="Add" style="background-color:lightblue;">
+                </form>
+            </div>
+        </div>
+        <br>
+        <br>
+        {% endfor %}
+    </div>
+    <div class="right_column">
+
+    </div>
+</div>
+{% endblock %}

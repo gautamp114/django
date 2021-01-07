@@ -1,0 +1,19 @@
+{% load static %}
+
+<div id="navbar">
+    <a href="{% url 'home' %}">Instagram</a>
+
+    <a>
+        <form action="{% url 'search' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Search" name="search">
+            <div class="sbutton">
+                <button type="submit" name="searchbtn" value="search">Search</button>
+            </div>
+        </form>
+    </a>
+    <div class="profile_nav">
+        <a href="{% url 'visit_pofile' request.user.profile.id %}">Profile</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+</div>

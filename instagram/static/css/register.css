@@ -1,0 +1,38 @@
+.regcontainer {
+    margin: 50px 550px;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    border: 1px solid black;
+    height: auto;
+    /* background-color: green; */
+}
+
+h1 {
+    text-align: center;
+}
+
+.button {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+.button input {
+    /* padding: 9px; */
+    height: 45px;
+    width: 100px;
+}
+
+.form-group {
+    justify-content: center;
+    margin: 15px;
+    padding: 7px;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.2s ease-in-out;
+    border: 1px solid lightgrey;
+    width: 90%;
+    font-family: cursive;
+}

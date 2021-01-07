@@ -1,0 +1,53 @@
+{% load static %}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script>
+    // function myfunction() {
+    //     var buttn = document.querySelector(".toggle-action");
+    //     buttn.classList.toggle("active");
+    // }
+
+    // function myfunction() {
+    //     console.log('hello');
+    //     var buttn = document.querySelector('.button-toggle');
+    //     var btn = document.querySelector('.toggle-action');
+    //     document.querySelector('.toggle-action').forEach(function (i) {
+    //         i.addEventListener("click", function (e) {
+    //             const clickedBtnIndex = [...btn].indexOf(e.target)
+    //             buttn[clickedBtnIndex].classList.toggle("active");
+    //         })
+    //     });
+    // }
+    // function myfunction() {
+    //     $(document).ready(function () {
+    //         $(".button-toggle").click(function () {
+    //             var $tog = $(this);
+
+    //             var id = "#toggle" + $tog.data('id');
+    //             console.log(id);
+    //             $(id).toggle("active");
+    //         });
+    //     });
+    // }
+</script>
+<script type="text/javascript">
+    $("#follow").click(function (e) {
+        e.preventDefault();
+        var href = this.href;
+        console.log(href);
+
+        $.ajax({
+            url: href,
+            success: function (response) {
+                if (response['following']) {
+                    $("#follow").html("Unfollow");
+                } else {
+                    $("#follow").html("Follow");
+                }
+            }
+        });
+    });
+</script>
+<scrip src="{% static 'js/navbar.js' %}"></scrip>
+
+</html>

@@ -1,0 +1,73 @@
+{% extends 'blog/sections/main.html' %}
+{% load static %}
+
+{% block title %}Instagram-Profile{% endblock %}
+
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="card">
+        <div class="image">
+            {% if profile.user.username == request.user.username %}
+            <form action="{% url 'change_profile_pic' request.user.profile.id %}" method="post"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="inpupload">
+                    <img src="{{ profile.imageurl }}" alt="Avatar" class="avatar">
+                </label>
+                <input type="file" name="images" id="inpupload" accept="image/*" onchange="form.submit()" hidden>
+
+
+            </form>
+            {% else %}
+            <img src="{{ profile.imageurl }}" alt="Avatar" class="avatar">
+            {% endif %}
+        </div>
+
+        <div class="detail">
+            <div class="detail-header">
+                <span>User profile <strong style="font-size: 25px;">{{ profile.user.username }}</strong></span>
+                {% if profile.user != request.user %}
+                {% if connection %}
+                <a href="{% url 'follow' profile.user.username %}" id="follow">Unfollow</a>
+                {% else %}
+                <a href="{% url 'follow' profile.user.username %}" id="follow">Follow</a>
+                {% endif %}
+                {% endif %}
+
+            </div>
+
+            <div class="detail-footer">
+                <span>No. of post : <strong>{{ post_users }}</strong></span>
+                <span>No. of followers: {{ follower }}</span>
+                <span>No. of following: {{ no_of_following }}</span>
+
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="user-posts">
+
+        <div class="posted-pic">
+            <div class="pictures">
+                {% if post_user %}
+                {% for post in post_user %}
+                <img src=" {{ post.imageurl }} ">
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
